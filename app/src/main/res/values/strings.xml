@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">ActivosFijosApp</string>
+    <string name="eliminar">Eliminar</string>
+    <string name="editar">Editar</string>
+    <string name="item_edit">Editar</string>
+    <string name="item_delete">Eliminar</string>
+
+
+</resources>

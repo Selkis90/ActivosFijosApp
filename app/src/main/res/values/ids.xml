@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="action_edit" type="id" />
+    <item name="action_delete" type="id" />
+    <item name="textViewNombre" type="id" />
+    <item name="textViewDescripcion" type="id" />
+    <item name="textViewValor" type="id" />
+    <item name="item_edit" type="id" />
+    <item name="item_delete" type="id" />
+</resources>
