@@ -71,7 +71,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun mostrarActivoSeleccionado(activoFijo: ActivoFijo) {
+    private fun mostrarActivoSeleccionado(activñoFijo: ActivoFijo) {
         binding.etId.setText(activoFijo.id)
         binding.etNombre.setText(activoFijo.nombre)
         binding.etDescripcion.setText(activoFijo.descripcion)
