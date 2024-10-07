@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
-import android.widget.PopupMenu
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -27,8 +26,7 @@ class MainActivity : AppCompatActivity() {
         // Inicializa el adaptador
         adapter = ActivoFijoAdapter(activosFijos) { activoFijo, view ->
             mostrarActivoSeleccionado(activoFijo)
-            // Mostrar el menú emergente al hacer clic en el elemento
-            showPopupMenu(view, activoFijo)
+            // No se muestra un menú emergente al hacer clic en el elemento
         }
 
         binding.recyclerViewActivos.layoutManager = LinearLayoutManager(this)
@@ -80,33 +78,8 @@ class MainActivity : AppCompatActivity() {
         binding.etValor.setText(activoFijo.valor.toString())
     }
 
-    // Método para mostrar el menú emergente
-    private fun showPopupMenu(view: View, activoFijo: ActivoFijo) {
-        val popupMenu = PopupMenu(this, view)
-        popupMenu.menuInflater.inflate(R.menu.popup_menu, popupMenu.menu)
-
-        popupMenu.setOnMenuItemClickListener { menuItem ->
-            when (menuItem.itemId) {
-                R.id.item_edit -> {
-                    editarActivo(activoFijo)
-                    true
-                }
-                R.id.item_delete -> {
-                    eliminarActivo(activoFijo)
-                    true
-                }
-                else -> false
-            }
-        }
-
-        popupMenu.show()
-    }
-
-
-
     private fun editarActivo(activoFijo: ActivoFijo) {
         // Implementa la lógica para editar el activo fijo
-        // Por ejemplo, podrías llenar los campos de texto con los datos del activo fijo
         mostrarActivoSeleccionado(activoFijo)
         Toast.makeText(this, "Editando activo: ${activoFijo.nombre}", Toast.LENGTH_SHORT).show()
         // Aquí puedes abrir una nueva actividad o un diálogo para editar los datos
@@ -123,5 +96,10 @@ class MainActivity : AppCompatActivity() {
                 Log.e("FirestoreError", "Error al eliminar activo: ${e.message}")
                 Toast.makeText(this, "Error al eliminar activo", Toast.LENGTH_SHORT).show()
             }
+    }
+
+    // Si tienes un método para manejar el menú de opciones en caso de que decidas usarlo más tarde
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return super.onOptionsItemSelected(item)
     }
 }
