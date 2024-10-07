@@ -26,7 +26,6 @@ class MainActivity : AppCompatActivity() {
         // Inicializa el adaptador
         adapter = ActivoFijoAdapter(activosFijos) { activoFijo, view ->
             mostrarActivoSeleccionado(activoFijo)
-            // No se muestra un menú emergente al hacer clic en el elemento
         }
 
         binding.recyclerViewActivos.layoutManager = LinearLayoutManager(this)
@@ -71,7 +70,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun mostrarActivoSeleccionado(activñoFijo: ActivoFijo) {
+    private fun mostrarActivoSeleccionado(activoFijo: ActivoFijo) {
         binding.etId.setText(activoFijo.id)
         binding.etNombre.setText(activoFijo.nombre)
         binding.etDescripcion.setText(activoFijo.descripcion)
@@ -79,14 +78,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun editarActivo(activoFijo: ActivoFijo) {
-        // Implementa la lógica para editar el activo fijo
         mostrarActivoSeleccionado(activoFijo)
         Toast.makeText(this, "Editando activo: ${activoFijo.nombre}", Toast.LENGTH_SHORT).show()
         // Aquí puedes abrir una nueva actividad o un diálogo para editar los datos
     }
 
     private fun eliminarActivo(activoFijo: ActivoFijo) {
-        // Lógica para eliminar el activo fijo de Firestore
         db.collection("activos_fijos").document(activoFijo.id).delete()
             .addOnSuccessListener {
                 Toast.makeText(this, "Activo eliminado exitosamente", Toast.LENGTH_SHORT).show()
@@ -98,7 +95,6 @@ class MainActivity : AppCompatActivity() {
             }
     }
 
-    // Si tienes un método para manejar el menú de opciones en caso de que decidas usarlo más tarde
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return super.onOptionsItemSelected(item)
     }
